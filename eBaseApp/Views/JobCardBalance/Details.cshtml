@@ -1,0 +1,522 @@
+﻿﻿@model eBaseApp.ViewModels.JobCardViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+    <link rel="stylesheet" href="~/assets/css/app.min.css">
+    <link rel="stylesheet" href="~/assets/bundles/prism/prism.css">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/components.css">
+    <!-- Custom style CSS -->
+    <link rel="stylesheet" href="~/assets/css/custom.css">
+</head>
+<body>
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <div style="border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 10px; padding: 1px;">
+                    <nav aria-label="breadcrumb" class="breadcrumb-style" style="background-color: white;">
+                        <ol class="breadcrumb mb-0 d-flex flex-row">
+                            <li class="breadcrumb-item">
+                                <a href="index.html" style="text-decoration: none; color: #495057;">
+                                    <i class="fas fa-home" style="margin-right: 5px;"></i>
+                                    Dashboard / Credit Control
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active">@ViewBag.Title</li>
+                        </ol>
+                    </nav>
+
+                </div>
+
+                <br />
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Job Card Balance Sheet</h4>
+                            </div><!-- end card header -->
+                            <div class="card-body">
+                                <div class="alert alert-light" style="text-align: center; background-color: #1f824c; color: white; ">
+                                    Account Information
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="account-number-input" class="form-label">Account Number:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "account_balance_wallet" with a Font Awesome wallet icon -->
+                                                    <i class="fas fa-wallet fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" id="account-number-input" value="@Model.CUTOFF.ACCOUNT_NO.Replace(" ","")" placeholder="Account Number">
+                                            </div>
+
+                                        </div>
+                                    </div
+>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="account-holder-input" class="form-label">Account Holder:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "person_outline" with a Font Awesome user icon -->
+                                                    <i class="fas fa-user fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" id="account-holder-input" value="@string.Format($"{Model.CUTOFF.INITIALS} {Model.CUTOFF.SURNAME}")" placeholder="Account Holder">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="customer-type-input" class="form-label">Customer Type:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "badge" with a Font Awesome id-badge icon -->
+                                                    <i class="fas fa-id-badge fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" id="customer-type-input" value="@string.Format($"{Model.CUTOFF.DEBTOR_TYPE_DESC}")" placeholder="Customer Type">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="stand-input" class="form-label">Stand:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "storefront" with a Font Awesome store icon -->
+                                                    <i class="fas fa-store fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" id="stand-input" value="@string.Format($"{Model.CUTOFF.PROCESS_ID}")" placeholder="Stand">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="flat-number-input" class="form-label">Flat Number:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "apartment" with a Font Awesome building icon -->
+                                                    <i class="fas fa-building fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" id="flat-number-input" value="@string.Format($"{Model.CUTOFF.PROCESS_ID}")" placeholder="Flat Number">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="flat-name-input" class="form-label">Flat Name:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "home" with a Font Awesome home icon -->
+                                                    <i class="fas fa-home fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" id="flat-name-input" value="@string.Format($"{Model.CUTOFF.PROCESS_ID}")" placeholder="Flat Name">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="flat-number-input" class="form-label">Address:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "fa-home" with a different Font Awesome building icon -->
+                                                    <i class="fas fa-building fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" value="@string.Format($"{Model.CUTOFF.STREET_NUMBER}")" placeholder="Address">
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="flat-name-input" class="form-label">Address Street :</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "add_road" with a Font Awesome road icon -->
+                                                    <i class="fas fa-road fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" value="@string.Format($"{Model.CUTOFF.STREET_NAME}")" placeholder="Address Street">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="flat-number-input" class="form-label">Stand Number:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "looks_one" with a Font Awesome number icon -->
+                                                    <i class="fas fa-1 fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" value="@string.Format($"{Model.CUTOFF.PROCESS_ID}")" placeholder="Stand Number">
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="flat-name-input" class="form-label">Suburb :</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "location_city" with a Font Awesome city icon -->
+                                                    <i class="fas fa-city fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" value="@string.Format($"{Model.CUTOFF.SUBURB_DESC}")" placeholder="Suburb">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="flat-number-input" class="form-label">Town:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "source_environment" with a Font Awesome tree icon -->
+                                                    <i class="fas fa-tree fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" value="@string.Format($"{Model.CUTOFF.TOWNSHIP_DESC}")" placeholder="Town">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <div class="form-group row">
+                                    <div class="alert alert-light" style="text-align: center; background-color: #1f824c; color: white; width: 48%; margin: 0 0.5% 0 1.5%">
+                                        Job Card Photos
+                                    </div>
+                                    <div class="alert alert-light" style="text-align: center; background-color: #1f824c; color: white; width: 48%; margin: 0 1.5% 0 0.5% ">
+                                        Action Details
+                                    </div>
+                                </div>
+
+
+
+
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="flat-number-input" class="form-label">Photos:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "image" with a Font Awesome camera icon -->
+                                                    <i class="fas fa-camera fa-sm"></i>
+                                                </span>
+                                                <div class="buttons" style="margin-right: 10px;">
+                                                    <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="far fa-eye"></i> View Photos</a>
+                                                    <a href="#" class="btn btn-icon icon-left btn-info"><i class="fas fa-info-circle"></i> Refresh</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="flat-number-input" class="form-label">Description:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "notes" with a Font Awesome sticky-note icon -->
+                                                    <i class="far fa-sticky-note fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" value="@Model.JobCardBalance.JobCardCode" placeholder="Description">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+
+
+
+                                <div class="form-group row" style="margin-bottom:0;">
+                                    <div class="col-sm-6">
+                                        <div class="alert alert-light" style="text-align: center; background-color: #1f824c; color: white;">
+                                            Action Results
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="flat-number-input" class="form-label">Issue Date:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "edit_calendar" with a Font Awesome calendar-alt icon -->
+                                                    <i class="far fa-calendar-alt fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" value="@Model.AllocatedAccount.CreatedDateTime" placeholder="Issue Date">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+
+
+
+
+                                <div class="form-group row">
+
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="flat-number-input" class="form-label">Results:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "task" with a Font Awesome tasks icon -->
+                                                    <i class="fas fa-tasks fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" placeholder="Results">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="flat-number-input" class="form-label">Process:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "rebase" with a Font Awesome sync-alt icon -->
+                                                    <i class="fas fa-sync-alt fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" value="Default (Credit Control and Debt Collection)" placeholder="Process">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="form-group row">
+
+
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="flat-number-input" class="form-label">Description:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "notes" with a Font Awesome sticky-note icon -->
+                                                    <i class="far fa-sticky-note fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" placeholder="Description">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="flat-number-input" class="form-label">Action Type:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "menu" with a Font Awesome bars icon -->
+                                                    <i class="fas fa-bars fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" value="@Model.ActionType.Name" placeholder="Action Type">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group row">
+
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="flat-number-input" class="form-label">Payment:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "payments" with a Font Awesome dollar-sign icon -->
+                                                    <i class="fas fa-dollar-sign fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" placeholder="Payment">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="flat-number-input" class="form-label">Contractor:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "person" with a Font Awesome user icon -->
+                                                    <i class="fas fa-user fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" value="@Model.Contractor.Name" placeholder="Contractor">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+
+
+                                <div class="form-group row">
+                                    @*<label  class="col-sm-2 col-form-label">Email</label>*@
+                                    <div class="col-sm-6">
+                                        @*<input type="text" class="form-control"  placeholder="Email">*@
+                                    </div>
+
+
+
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="flat-number-input" class="form-label">Sub-Contractor:</label>
+                                            <div class="col-md-9 input-group">
+                                                <span class="input-group-text material-symbols-outlined">
+                                                    <!-- Replace "group" with a Font Awesome users icon -->
+                                                    <i class="fas fa-users fa-sm"></i>
+                                                </span>
+                                                <input type="text" class="form-control" placeholder="Sub-contractor">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                @*<div class="alert alert-light" style="text-align:center;">
+                                        Job-Card Actions
+                                    </div>*@
+                                <div class="form-group row">
+                                    <div class="col-sm-12 d-flex justify-content-end">
+                                        <div class="buttons">
+                                            <a href="#" class="btn btn-icon icon-left btn-danger"><i class="fas fa-times"></i> Dismis</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div> <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+    </div>
+
+</body>
+
+<!-- Large modal -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-sm-12">
+                    <div class="alert alert-light col-sm-12" style="text-align: center; width:100%">
+                        <h5 class="modal-title" id="myLargeModalLabel">Job Card Related Images</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-body">
+                <img src="~/assets/img/blog/meterreading.jpg" width="420" height="720" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/assets/bundles/chocolat/dist/js/jquery.chocolat.min.js"></script>
+<!-- Page Specific JS File -->
+<script src="~/assets/js/page/gallery1.js"></script>
+<script src="~/assets/js/app.min.js"></script>
+<!-- JS Libraies -->
+<script src="~/assets/bundles/prism/prism.js"></script>
+<!-- Page Specific JS File -->
+<!-- Template JS File -->
+<script src="~/assets/js/scripts.js"></script>
+<!-- Custom JS File -->
+<script src="~/assets/js/custom.js"></script>

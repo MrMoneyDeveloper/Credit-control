@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Log in";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Credit Control - Account Login</title>
+    <!-- General CSS Files -->
+    <link href="~/assets/css/app.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/css/app.min.css">
+    <link rel="stylesheet" href="~/Content/bundles/bootstrap-social/bootstrap-social.css">
+    <link href="~/assets/bundles/bootstrap-social/bootstrap-social.css" rel="stylesheet" />
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/css/components.css">
+    <link href="~/assets/css/components.css" rel="stylesheet" />
+    <!-- Custom style CSS -->
+    <link rel="stylesheet" href="~/Content/css/custom.css">
+    <link href="~/assets/css/custom.css" rel="stylesheet" />
+    <link rel='shortcut icon' type='image/x-icon' href='~/Content/img/coenotext.png' />
+    <style>
+        body {
+            background: url(/Content/img/loginimage2.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            margin: 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        .auth-form {
+            margin-top: 41vh; /* Adjust the top margin as needed */
+            margin-left: 0vw; /* Adjust the left margin as needed */
+            padding: 1.5rem;
+            border-radius: .25rem;
+            background-color: #ffffff98;
+            box-shadow: 0 0 0 1px rgba(20, 20, 31, .05), 0 1px 3px 0 rgba(20, 20, 31, .15);
+        }
+
+
+
+        .login-options {
+            text-align: left;
+          
+        }
+
+            .login-options a {
+                margin-right: 10px;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="loader"></div>
+
+    <div class="container" style="
+    margin-left: 114px;
+">
+        <div class="row justify-content-start">
+            <div class="col-lg-4 col-md-6 col-sm-8" style="margin-left: 20px;">
+                <!-- Add the style attribute with margin-left -->
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @class = "auth-form card card-primary" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="text-center">
+                        <h4>Login</h4>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <button class="btn btn-lg btn-primary btn-block" onclick="window.location.href='@Url.Action("Index", "Home")'" type="button">LOGIN WITH SSO</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- General JS Scripts -->
+    <script src="~/Scripts/js/app.min.js"></script>
+    <script src="~/assets/js/app.min.js"></script>
+    <!-- JS Libraies -->
+    <!-- Page Specific JS File -->
+    <!-- Template JS File -->
+    <script src="~/Scripts/js/scripts.js"></script>
+    <script src="~/assets/js/scripts.js"></script>
+    <!-- Custom JS File -->
+    <script src="~/assets/js/custom.js"></script>
+</body>
+
+</html>

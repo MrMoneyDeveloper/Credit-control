@@ -1,0 +1,467 @@
+﻿@model eBaseApp.ViewModels.BulkAllocationViewModel
+@using eBaseApp.Helpers
+@using eBaseApp.DataAccessLayer;
+@using eBaseApp.Models
+@{
+    ViewBag.Title = "Bulk Allocate";
+    Int32 count = 1;
+}
+<head>
+    <link rel="stylesheet" href="~/assets/bundles/datatables/datatables.min.css">
+    <link rel="stylesheet" href="~/assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+
+    
+    <link rel=" stylesheet" href="~/assets/Icon library/css/all.min.css" />
+    <link rel="stylesheet" href="~/assets/Icon library/webfonts/" />
+    <link rel="stylesheet" href="~/assets/Icon library/css/fontawesome.min.css" />
+
+
+    <style>
+        +
+        nav.breadcrumb-style {
+            background-color: #f8f9fa;
+            padding: 10px 16px;
+            border-radius: 5px;
+        }
+
+        li.breadcrumb-item {
+            display: inline-block;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 5px;
+            background-color: #f8f9fa;
+        }
+
+            li.breadcrumb-item.active {
+                background-color: #e9ecef;
+            }
+
+        .modal-title {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("BulkAllocate", "CreditControl", FormMethod.Post, new { id = "ContractorFormId" }))
+    {
+        <div class="main-content" @*style="width:100%"*@>
+            <div class="page-content">
+
+           
+                    <nav aria-label="breadcrumb" class="breadcrumb-style">
+                        <ol class="breadcrumb mb-0 d-flex flex-row">
+                            <li class="breadcrumb-item">
+                                <a href="index.html" style="text-decoration: none; color: #495057;">
+                                    <i class="fas fa-home" style="margin-right: 5px;"></i>
+                                    Dashboard / Credit Control / Bulk Allocate
+                                </a>
+                            </li>
+                        </ol>
+                    </nav>
+              
+
+                <div class="container-fluid">
+
+
+
+
+                    <div class="row" @*style="width:100%"*@>
+                        <div class="col-lg-12">
+                            <div class="card" style="width:100%">
+                                <div class="card-header">
+                                    <h4 class="card-title">Bulk Allocation Form</h4>
+                                </div><!-- end card header -->
+                                <div class="card-body">
+                                    <form action="#">
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="basicpill-firstname-input" class="form-label"> Action Type </label>
+                                                        <div class="col-md-9 input-group">
+                                                            <span class="input-group-text material-symbols-outlined">
+                                                                <!-- Replace "call_to_action" text with a more relevant Font Awesome icon for a form or field -->
+                                                                <i class="fas fa-edit fa-sm"></i>
+                                                            </span>
+
+                                                            @Html.DropDownListFor(model => model.ActionTypeKey, DropdownHelper.ActionTypes(), "--Select Action Type--", htmlAttributes: new { @class = "form-control" })
+                                                        </div>
+
+
+
+                                                    </div>
+                                                </div>
+                                                <!-- end col -->
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="basicpill-lastname-input" class="form-label"> Selected Count </label>
+                                                        <div class="col-md-9 input-group">
+                                                            <span class="input-group-text material-symbols-outlined">
+                                                                <!-- Replace "fa-tasks" with a smaller Font Awesome icon -->
+                                                                <i class="fas fa-tasks fa-sm"></i>
+                                                            </span>
+                                                            <input type="number" class="form-control" id="input-selected-count" disabled>
+                                                        </div>
+
+
+
+
+
+
+                                                    </div>
+                                                </div><!-- end col -->
+                                            </div>
+                                            <!-- end row -->
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="basicpill-lastname-input" class="form-label">Target Date</label>
+                                                        <div class="col-md-9 input-group">
+                                                            <span class="input-group-text material-symbols-outlined">
+                                                                <!-- Replace "calendar_today" with a smaller Font Awesome calendar icon -->
+                                                                <i class="fas fa-calendar-alt fa-sm"></i>
+                                                            </span>
+
+                                                            <input type="date" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="">
+                                                            <!-- Add any additional styling or icons if needed -->
+                                                        </div>
+
+
+                                                    </div><!-- end row -->
+                                                </div><!-- end col -->
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="input-selected-amount-" class="form-label"> Selected Amount </label>
+                                                        <div class="col-md-9 input-group">
+                                                            <span class="input-group-text material-symbols-outlined">
+                                                                <!-- Replace "paid" with a smaller Font Awesome dollar sign icon -->
+                                                                <i class="fas fa-dollar-sign fa-sm"></i>
+                                                            </span>
+                                                            <input type="text" class="form-control" id="input-selected-amount" disabled>
+                                                        </div>
+
+                                                    </div>
+                                                </div><!-- end col -->
+                                            </div><!-- end row -->
+                                            <div class="row">
+
+                                            </div>
+
+                                            <div class="   mt-4">
+                                                <button type="button" class="btn" style="background-color: #6777EF; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;" id="prevBtn">
+                                                    <span class="fa fa-location-arrow"></span> Refresh
+                                                </button>
+
+                                                <button type="button" class="btn" style="background-color: #6777EF; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-left: 10px;" id="allocateBtn" disabled data-toggle="modal" data-target=".bd-example-modal-lg">
+                                                    <span class="fa fa-plus"></span> Allocate
+                                                </button>
+                                                @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"> Large Modal </button>*@
+                                            </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+
+
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card" style="width:90%">
+                                <div class="card-header">
+                                    <h4>Multi Select</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive" style="width: 100%;">
+                                        <table class="table table-striped" id="table-2">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center pt-3 text-white" style="background-color: #1f824c">
+                                                        <div class="custom-checkbox custom-checkbox-table custom-control">
+                                                            <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all" disabled>
+                                                            <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
+                                                        </div>
+                                                    </th>
+                                                    <th class="text-white" style="background-color: #1f824c">Municipality</th>
+                                                    <th class="text-white" style="background-color: #1f824c">Account No</th>
+                                                    <th class="text-white" style="background-color: #1f824c">Full Name</th>
+                                                    <th class="text-white" style="background-color: #1f824c">Account Status</th>
+                                                    <th class="text-white" style="background-color: #1f824c">Customer Type</th>
+                                                    <th class="text-white" style="background-color: #1f824c">Action Type</th>
+                                                    <th class="text-white" style="background-color: #1f824c">Address 1</th>
+                                                    <th class="text-white" style="background-color: #1f824c">Address 2</th>
+                                                    <th class="text-white" style="background-color: #1f824c">Suburb</th>
+                                                    <th class="text-white" style="background-color: #1f824c">Town</th>
+                                                    <th class="text-white" style="background-color: #1f824c">Total Areas</th>
+                                                    <th class="text-white" style="background-color: #1f824c">Total Due</th>
+                                                    <th class="text-white" style="background-color: #1f824c"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (R_CC_CUT_OFF_PROCESSING cutoff in ViewHelper.CC_CUT_OFF_PROCESSING())
+                                                {
+                                                    <tr>
+                                                        <td class="text-center pt-2">
+                                                            <div class="custom-checkbox custom-control">
+                                                                <input type="checkbox" value="@cutoff.ID" name="selectedAccounts" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-@count" onclick="checkStatus(event, '@cutoff.AMT_REQUIRED')">
+                                                                <label for="checkbox-@count" class="custom-control-label">&nbsp;</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>@Html.Raw(cutoff.Municipality)</td>
+                                                        <td>@Html.Raw(cutoff.ACCOUNT_NO)</td>
+                                                        <td>@Html.Raw(String.Format("{0} {1}", cutoff.INITIALS, cutoff.SURNAME))</td>
+                                                        <td>@Html.Raw(cutoff.MAST_ACCT == "N" ? "NORMAL" : cutoff.MAST_ACCT)</td>
+                                                        <td>@Html.Raw(cutoff.DEBTOR_TYPE_DESC)</td>
+                                                        <td>@Html.Raw(cutoff.ACTION_TYPE == "R" ? "RECONNECTION" : cutoff.ACTION_TYPE == "W" ? "PRE-TERMINATION" : "CUT-OFF")</td>
+                                                        <td>@Html.Raw(cutoff.POSTAL_ADDR_LINE1)</td>
+                                                        <td>@Html.Raw(cutoff.POSTAL_ADDR_LINE2)</td>
+                                                        <td>@Html.Raw(cutoff.SUBURB_DESC)</td>
+                                                        <td>@Html.Raw(cutoff.TOWNSHIP_DESC)</td>
+                                                        <td>@Html.Raw(cutoff.CuurentBalance)</td>
+                                                        <td>@Html.Raw(cutoff.TotalAreas)</td>
+                                                        <td>
+                                                            @if (cutoff.ACTION_TYPE == "R")
+                                                            {
+                                                                <button type="button" onclick="SendWhasAppGrapeVine(@cutoff.ACCOUNT_NO)" class="btn" style="background-color: #1f824c; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-left: 10px;" id="allocateBtn">
+                                                                    Send Notice
+                                                                </button>
+                                                            }
+                                                        </td>
+                                                    </tr>
+                                                    count++;
+                                                }
+                                            </tbody>
+                                        </table>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+        </div>
+
+
+        <!-- Large modal -->
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="myLargeModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="basicpill-firstname-input" class="form-label fs-6"> Allocation Group </label>
+                                    <div class="col-md-9 input-group">
+                                        <span class="input-group-text material-symbols-outlined">
+                                            <!-- Replace "fa-bolt" with a smaller Font Awesome icon for allocation group -->
+                                            <i class="fas fa-user-group fa-sm"></i>
+                                        </span>
+                                        @Html.DropDownListFor(model => model.ActionTypeKey, DropdownHelper.ActionTypes(), "Select", htmlAttributes: new { @class = "form-control form-control-sm", style = "width: 200px;" })
+                                        <span class="input-group-text"><span class="fa"></span></span>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <span> <label for="basicpill-lastname-input" class="form-label"> Total Records Selected</label></span>
+                                    <div class="col-md-9 input-group">
+                                        <span class="input-group-text material-symbols-outlined">
+                                            <!-- Replace "task_alt" with a smaller Font Awesome icon for tasks or activities -->
+                                            <i class="fas fa-tasks fa-sm"></i>
+                                        </span>
+                                        <input type="number" class="form-control" id="input-total-selected" disabled>
+                                        <span class="input-group-text"><span class="fa "></span></span>
+                                    </div>
+
+                                </div>
+                            </div><!-- end col -->
+                            <!-- end col -->
+                        </div>
+                        <div class="row">
+                            <!-- end col -->
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="basicpill-lastname-input" class="form-label"></label>
+                                    <div class="col-md-9 input-group">
+                                        <button type="submit" class="btn btn-primary btn-sm w-sm ms-auto">
+                                            <span class="fa fa-save">
+                                            </span>
+                                            Save
+                                        </button>
+                                    </div>
+
+
+                                </div>
+                            </div><!-- end col -->
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Bulk Allocation Form</h4>
+                                    </div><!-- end card header -->
+                                    <div class="card-body">
+                                        <table id="example2" class="table table-striped table-bordered" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th class="table-heading" style="background-color: #1f824c; color: #fff">ID</th>
+                                                    <th class="table-heading" style="background-color: #1f824c; color: #fff">Name</th>
+                                                    <th class="table-heading" style="background-color: #1f824c; color: #fff">Capacity</th>
+                                                    <th class="table-heading" style="background-color: #1f824c; color: #fff">Allocated</th>
+                                                    <th class="table-heading" style="background-color: #1f824c; color: #fff">Allocate</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                @foreach (Contractor contractor in ViewHelper.GetContractors())
+                                                {
+                                                    <tr>
+                                                        <td>@Html.Raw(contractor.Id)</td>
+                                                        <td>@Html.Raw(contractor.Name)</td>
+                                                        <td>@Html.Raw(contractor.Capacity)</td>
+                                                        <td>@Html.Raw(contractor.Allocated)</td>
+                                                        <td><input type="text" name="contr_@contractor.Id" id="contr_@contractor.Id" onchange="vaa('contr_@contractor.Id')" value="0" class="form-control" /></td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div><!-- end col -->
+                        </div><!-- end row -->
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    }
+</body>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+@*<script src="~/assets/js/page/form-wizard.js"></script>*@
+<script src="~/assets/bundles/jquery-steps/jquery.steps.min.js"></script>
+<script src="~/assets/bundles/jquery-validation/dist/jquery.validate.min.js"></script>
+
+<script src="~/assets/bundles/datatables/datatables.min.js"></script>
+<script src="~/assets/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+<script src="~/assets/bundles/jquery-ui/jquery-ui.min.js"></script>
+<!-- Page Specific JS File -->
+<script src="~/assets/js/page/datatables.js"></script>
+
+<script type="text/javascript">
+    var numberOfSelectedAcc = 0;
+    var totalSelectedAreas = 0;
+    var TotalAllocated = 0;
+    function checkStatus(event, amt) {
+        const checkbox = event.target;
+        const allocateBtn = document.getElementById("allocateBtn");
+        if (checkbox.checked) {
+            numberOfSelectedAcc += 1;
+            totalSelectedAreas = parseFloat(totalSelectedAreas) + parseFloat(amt);
+        }
+        else {
+            numberOfSelectedAcc -= 1;
+            totalSelectedAreas = parseFloat(totalSelectedAreas) - parseFloat(amt);
+        }
+
+        if (numberOfSelectedAcc >= 1)
+            allocateBtn.disabled = false;
+        else
+            allocateBtn.disabled = true;
+        $('#input-selected-count').val(numberOfSelectedAcc);
+        $('#input-total-selected').val(numberOfSelectedAcc);
+        $('#input-selected-amount').val('R ' + totalSelectedAreas);
+    }
+
+    function findPropertiesWithSubstring(obj, substring) {
+        const result = {};
+
+        for (const key in obj) {
+            if (obj.hasOwnProperty(key) && key.includes(substring)) {
+                result[key] = obj[key];
+            }
+        }
+
+        return result;
+    }
+
+    function vaa(id) {
+        debugger;
+        // Assuming you have a form with id="myForm"
+        const form = document.getElementById('ContractorFormId');
+        const inputElements = form.querySelectorAll('input');
+        // Get all properties of the form with names containing "contr_"
+        const formProperties = findPropertiesWithSubstring(form, 'contr_');
+        var inpt = document.getElementById(id).value;
+        if (parseInt(inpt) < 0) {
+            inpt = 0;
+            $('#' + id).val('0');
+        }
+        // Use the properties with IDs
+        var total = 0;
+        var temp = 0;
+        for (const key in inputElements) {
+            if (key.length == 1) {
+                const obj = inputElements[key];
+                debugger;
+                if ('id' in obj) {
+                    debugger;
+                    if (obj.id.includes('contr_')) {
+                        debugger;
+                        var r = document.getElementById(obj.id).value;
+                        if (r == '' || r == null) r = 0;
+                        total = parseInt(total) + parseInt(r);
+                    }
+                }
+            }
+        }
+        debugger;
+        if (total > numberOfSelectedAcc) {
+            $('#' + id).val('0');
+            if (id.includes('contr_')) {
+                const inpt = document.getElementById(id);
+                TotalAllocated = parseInt(total) - parseInt(inpt.value);
+            }
+        } else {
+            TotalAllocated = parseInt(total);
+        }
+    }
+</script>
+<script>
+    function SendWhasAppGrapeVine(account) {
+        $.ajax({
+            url: '@Url.Action("SendWhasAppGrapeVine", "JobCardBalance")',
+            type: 'GET',
+            success: function (data) {
+                alert(`SMS & WhatsApp notification has been sent to customer with account ${account}`)
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.error(errorThrown);
+            }
+        })
+    }
+</script>

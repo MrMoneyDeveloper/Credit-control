@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Credit Control - City of Ekurhuleni </title>
+    <!-- General CSS Files -->
+
+
+    <link rel="stylesheet" href="~/assets/css/app.min.css">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/components.css">
+    <!-- Custom style CSS -->
+    <link rel="stylesheet" href="~/assets/css/custom.css">
+    <link rel='shortcut icon' type='image/x-icon' href='~/Content/img/coenotext.png' />
+    <!-- ICON Style -->
+    <link rel="stylesheet" href="~/assets/Icon library/scss/_icons.scss">
+    <link rel="stylesheet" href="~/assets/Icon library/css/all.min.css">
+    <link rel="stylesheet" href="~/assets/Icon library/js/all.min.js">
+    <link rel="stylesheet" href="~/assets/Icon library/less/_icons.less">
+
+   >
+    <link rel="stylesheet" href="~/assets/Icon library/webfonts/" />
+    <link rel="stylesheet" href="~/assets/Icon library/css/fontawesome.min.css" />
+
+
+
+    <style>
+        .sidebar-user {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar-user-picture {
+            margin-right: 10px;
+        }
+
+        .user-details {
+            flex-grow: 1;
+        }
+
+        .user-name,
+        .user-role {
+            margin: 0;
+            padding: 0;
+        }
+
+        .user-image {
+            max-width: 50px;
+            border-radius: 50%;
+        }
+
+        .header-logo {
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loader"></div>
+    <div id="app">
+        <div class="main-wrapper main-wrapper-1">
+            <div class="navbar-bg"></div>
+            <nav class="navbar navbar-expand-lg main-navbar sticky" style="background-color: #176738; color: #FFFFFF;">
+                <div class="form-inline mr-auto">
+                    <ul class="navbar-nav mr-3">
+                        <li>
+                            <a href="#" data-toggle="sidebar" class="nav-link nav-link-lg
+									collapse-btn" style="color: #ffffff;"> <i data-feather="align-justify"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown"
+                               class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                <img alt="image" src="~/Content/usr/userplaceholder.jpg"
+                                     class="user-img-radious-style"> <span class="d-sm-none d-lg-inline-block"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right pullDown">
+                                <div class="dropdown-title">Hello Sarah Smith</div>
+                                <a href="profile.html" class="dropdown-item has-icon">
+                                    <i class="far
+                                            fa-user"></i> Profile
+                                </a> <a href="timeline.html" class="dropdown-item has-icon">
+                                    <i class="fas fa-bolt"></i>
+                                    Activities
+                                </a> <a href="" class="dropdown-item has-icon">
+                                    <i class="fas fa-cog"></i>
+                                    Settings
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a href="auth-login.html" class="dropdown-item has-icon text-danger">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+            </nav>
+            <div class="main-sidebar sidebar-style-2">
+                <aside id="sidebar-wrapper">
+                    <div class="sidebar-brand" style="background-color: #176738;">
+                        <a href="index.html">
+                            <img alt="image" style="width:auto; height:80%" src="~/Content/img/coenotext.png" class="header-logo" />
+
+                        </a>
+                        <span style="color: white; font-size: 9px; font-family: 'Bahnschrift SemiLight';"><b>CITY OF EKURHULENI</b></span>
+                    </div>
+
+
+
+                    <div class="sidebar-user" style="color: black;">
+                        <div class="sidebar-user-picture">
+                            <img src="~/Content/usr/userplaceholder.jpg" alt="User Image">
+                        </div>
+                        @*<div class="dropdown">
+                            <select class="btn btn-success custom-select"
+                                    style="background-color: #6777EF; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                                <option selected>Profile</option>
+                                <option value="profile.html"><i class="far fa-user"></i> Profile</option>
+                                <option value="timeline.html"><i class="fas fa-bolt"></i> Activities</option>
+                                <option value="#"><i class="fas fa-cog"></i> Settings</option>
+                                <option value="auth-login.html"><i class="fas fa-sign-out-alt"></i> Logout</option>
+                            </select>
+                        </div>*@
+
+
+                        <ul class="sidebar-menu">
+                            @*<li class="menu-header">Main</li>*@
+                            <li class="dropdown treeview" id="Dashboard">
+                                <a href="@Url.Action("Index", "Home")" class=" nav-link">
+                                    <i data-feather="monitor"></i><span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="menu-toggle nav-link has-dropdown">
+                                    <i data-feather="layers"></i><span>Credit Control</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="nav-link" href="/CreditControl/BulkAllocate">Bulk Allocation</a></li>
+                                    <li><a class="nav-link" href="@Url.Action("Construction", "Home")">Print Jobcard Templates</a></li>
+                                    <li><a class="nav-link" href="/Contractor/TechnicianBulkAssign">Contrator - Technician</a></li>
+                                    <li><a class="nav-link" href="/JobCardBalance/Index">Jobcard Balance Sheet</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+</aside>
+            </div>
+            <!-- Main Content -->
+            @RenderBody()
+            <footer class="main-footer">
+                <div class="footer-left">
+                    Copyright &copy; @DateTime.Now.Year <div class="bullet"></div>Allrights Reserved <a href="https://www.ekurhuleni.gov.za/">City of Ekurhuleni</a>
+                </div>
+                <div class="footer-right">
+                </div>
+            </footer>
+        </div>
+    </div>
+    <!-- General JS Scripts -->
+
+
+    <script src="~/assets/js/app.min.js"></script>
+    <!-- JS Libraies -->
+    <!-- Page Specific JS File -->
+    <!-- Template JS File -->
+    <script src="~/assets/js/scripts.js"></script>
+    <!-- Custom JS File -->
+    <script src="~/assets/js/custom.js"></script>
+
+
+</body>
+
+</html>

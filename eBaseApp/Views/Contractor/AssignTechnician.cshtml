@@ -1,0 +1,121 @@
+﻿@model eBaseApp.Models.AllocatedAccount
+@{
+    ViewBag.Title = "AssignTechnician";
+}
+
+<h2>AssignTechnician</h2>
+
+<div>
+    <h4>AllocatedAccount</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsLocked)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsLocked)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBySystemUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBySystemUserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBySystemUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBySystemUserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoundRobinQueueId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoundRobinQueueId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ColorCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ColorCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractorId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractorId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActionTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActionTypeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CUT_OFF_PROCESSING_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CUT_OFF_PROCESSING_ID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

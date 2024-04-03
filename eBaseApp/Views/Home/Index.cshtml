@@ -1,0 +1,749 @@
+﻿<!-- Leaflet CSS -->
+<link rel="stylesheet" href="/Content/Leaflet-Mobile_files/leaflet.css" integrity="sha512-...">
+<!-- Leaflet JS -->
+<script src="/Content/Leaflet-Mobile_files/leaflet.js" integrity="sha512-..." crossorigin=""></script>
+<!-- Esri Leaflet -->
+<script src="/Content/Leaflet-Mobile_files/esri-leaflet.js"></script>
+<script src="/Content/Leaflet-Mobile_files/esri-leaflet-vector.js"></script>
+<script src="/Content/Leaflet-Mobile_files/esri-leaflet-geocoder.js"></script>
+
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        color: #323232;
+    }
+
+    .sticky-slider {
+        position: fixed;
+        bottom: 1rem;
+        border: none;
+        border-radius: 30px;
+        background-color: #0b4f34;
+        color: #fff;
+        z-index: 10000;
+        box-shadow: 0 0 50px 0 rgba(0,0,0,.4);
+        padding: 1rem 2rem;
+        margin: 1rem 0;
+        right: 1rem;
+        font-size: 1rem;
+    }
+
+    .geocoder-control-input {
+        width: 300px; /* Adjust the width as needed */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .geocoder-control {
+        text-align: center;
+    }
+
+    .breadcrumb-container {
+        background-color: rgba(255, 255, 255, 0.5); /* Adjust the alpha value for transparency */
+        border: 1px solid #ddd; /* Adjust the border color and size as needed */
+        padding: 10px; /* Adjust the padding as needed */
+        border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+    }
+
+
+
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 10000;
+</style>
+<div class="main-content">
+    <section class="section">
+
+        <div class="breadcrumb-container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ol>
+            </nav>
+        </div>
+
+        <br />
+        <div class="row">
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="card" style="background-color: rgba(120, 190, 160, 0.7); color: #fff;" onmouseover="this.style.backgroundColor='rgba(90, 150, 130, 0.7)'" onmouseout="this.style.backgroundColor='rgba(120, 190, 160, 0.7)'">
+                    <div class="card-statistic-4">
+                        <div class="info-box7-block">
+                            <h6 class="m-b-20 text-right" style="color: #fff;">Reconnection</h6>
+                            <h4 class="text-right">
+                                <i class="fas fa-window-restore pull-left c-icon" style="color: #fff; background-color: rgba(0, 0, 0, 0.2); padding: 5px; border-radius: 50%;"></i><span style="color: #fff;">55</span>
+                            </h4>
+                            <p class="mb-0 mt-3 text-muted" style="color: #fff;">
+                                <i class="fas fa-arrow-circle-up col-light-green m-r-5" style="color: #93ff93; background-color: #fff; padding: 5px; border-radius: 50%;"></i><span class="text-light font-weight-bold">23%</span> <span class="text-light">than previous month</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="card" style="background-color: rgba(26, 50, 110, 0.8); color: #fff;" onmouseover="this.style.backgroundColor='rgba(30, 60, 120, 0.8)'" onmouseout="this.style.backgroundColor='rgba(26, 50, 110, 0.8)'">
+                    <div class="card-statistic-4">
+                        <div class="info-box7-block">
+                            <h6 class="m-b-20 text-right" style="color: #fff;">Cut-Off</h6>
+                            <h4 class="text-right">
+                                <i class="fas fa-cut pull-left c-icon" style="color: #fff; background-color: rgba(0, 0, 0, 0.2); padding: 5px; border-radius: 50%;"></i><span style="color: #fff;">250</span>
+                            </h4>
+                            <p class="mb-0 mt-3 text-muted" style="color: #fff;">
+                                <i class="fas fa-arrow-circle-up m-r-5" style="color: #93ff93; background-color: #fff; padding: 5px; border-radius: 50%;"></i><span class="font-weight-bold text-light">3%</span> <span class="text-light">than previous month</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="card" style="background-color: rgba(210, 90, 60, 0.8); color: #fff;" onmouseover="this.style.backgroundColor='rgba(220, 100, 70, 0.8)'" onmouseout="this.style.backgroundColor='rgba(210, 90, 60, 0.8)'">
+                    <div class="card-statistic-4">
+                        <div class="info-box7-block">
+                            <h6 class="m-b-20 text-right" style="color: #fff;">Unallocated</h6>
+                            <h4 class="text-right">
+                                <i class="fas fa-ticket-alt pull-left c-icon" style="color: #fff; background-color: rgba(0, 0, 0, 0.2); padding: 5px; border-radius: 50%;"></i><span style="color: #fff;">100</span>
+                            </h4>
+                            <p class="mb-0 mt-3 text-muted" style="color: #fff;">
+                                <i class="fas fa-arrow-circle-up col-light-green m-r-5" style="color: #93ff93; background-color: #fff; padding: 5px; border-radius: 50%;"></i><span class="text-light font-weight-bold">21%</span> <span class="text-light">than previous month</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="card" style="background-color: rgba(90, 140, 70, 0.8); color: #fff;" onmouseover="this.style.backgroundColor='rgba(100, 150, 80, 0.8)'" onmouseout="this.style.backgroundColor='rgba(90, 140, 70, 0.8)'">
+                    <div class="card-statistic-4">
+                        <div class="info-box7-block">
+                            <h6 class="m-b-20 text-right" style="color: #fff;">Contractors</h6>
+                            <h4 class="text-right">
+                                <i class="fas fa-users pull-left c-icon" style="color: #fff; background-color: rgba(0, 0, 0, 0.2); padding: 5px; border-radius: 50%;"></i><span style="color: #fff;">63</span>
+                            </h4>
+                            <p class="mb-0 mt-3 text-muted" style="color: #fff;">
+                                <i class="fas fa-arrow-circle-down col-dark-red m-r-5" style="color: #820303; background-color: #fff; padding: 5px; border-radius: 50%;"></i><span class="text-light font-weight-bold">05%</span> <span class="text-light">than previous month</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 card" style="position:absolute; height:160%">
+            <div>
+                <div class="section-body">
+
+
+                    style="width: 100%; box-sizing: border-box; height: 100%; margin-left: 13px; "
+                    @*<div class="card-header">
+                            <h4>Goe-Accounts</h4>
+                        </div>*@
+                    <div class="card-body">
+
+                        <div id="map" class="leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style="outline: none;"><div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(-442.921px, 269.918px, 0px);"><div class="leaflet-pane leaflet-tile-pane"></div><div class="leaflet-pane leaflet-shadow-pane"><img src="Leaflet-Mobile_files/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(-19469px, -19631px, 0px);" alt=""></div><div class="leaflet-pane leaflet-overlay-pane"><div class="leaflet-gl-layer mapboxgl-map" style="width: 2252.4px; height: 1054.8px; position: absolute; transform: translate3d(255.221px, -357.818px, 0px);"><div class="mapboxgl-canary" style="visibility: hidden;"></div><div class="mapboxgl-canvas-container"><canvas class="mapboxgl-canvas leaflet-image-layer leaflet-zoom-animated" style="position: absolute; width: 2252px; height: 1055px; transform: translate3d(1.36424e-12px, -8.41283e-12px, 0px) scale(1);" tabindex="0" aria-label="Map" width="3070" height="1438"></canvas></div><div class="mapboxgl-control-container"><div class="mapboxgl-ctrl-top-left"></div><div class="mapboxgl-ctrl-top-right"></div><div class="mapboxgl-ctrl-bottom-left"><div class="mapboxgl-ctrl" style="display: none;"><a class="mapboxgl-ctrl-logo" target="_blank" rel="noopener nofollow" href="https://www.mapbox.com/" aria-label="Mapbox logo"></a></div></div><div class="mapboxgl-ctrl-bottom-right"></div></div></div></div><div class="leaflet-pane leaflet-marker-pane"><img src="Leaflet-Mobile_files/marker-icon-2x.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(-19469px, -19631px, 0px); z-index: -19631;" alt="" tabindex="0"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(151922px, 150873px, 0px) scale(512);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out">−</a></div></div><div class="leaflet-top leaflet-right"><div class="geocoder-control leaflet-control"><input class="geocoder-control-input leaflet-bar" title="Location Search"><div class="geocoder-control-suggestions leaflet-bar"><div class=""></div></div></div></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control esri-truncated-attribution:hover esri-truncated-attribution"><a href="http://leafletjs.com/" title="A JS library for interactive maps">Leaflet</a> | Powered by <a href="https://www.esri.com/">Esri</a> | <span class="esri-dynamic-attribution" style="max-width: 1822px;">Esri South Africa, HERE, Garmin, Foursquare, METI/NASA, USGS</span></div></div></div></div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+</div>
+
+@*<div class="row" hidden>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Assign Project List</h4>
+                    <div class="card-header-form">
+                        <form>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Cust.</th>
+                                    <th>Project</th>
+                                    <th>Assign Date</th>
+                                    <th>Team</th>
+                                    <th>Priority</th>
+                                    <th>Status</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td class="table-img">
+                                    <img src="assets/img/users/user-8.png" alt="">
+                                </td>
+                                <td>
+                                    <h6 class="mb-0 font-13">Wordpress Website</h6>
+                                    <p class="m-0 font-12">
+                                        Assigned to<span class="col-green font-weight-bold"> Airi Satou</span>
+                                    </p>
+                                </td>
+                                <td>20-02-2018</td>
+                                <td class="text-truncate">
+                                    <ul class="list-unstyled order-list m-b-0 m-b-0">
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-8.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="Wildan Ahdian">
+                                        </li>
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-9.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="John Deo">
+                                        </li>
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-10.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="Sarah Smith">
+                                        </li>
+                                        <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="badge-outline col-red">High</div>
+                                </td>
+                                <td class="align-middle">
+                                    <div class="progress-text">50%</div>
+                                    <div class="progress" data-height="6">
+                                        <div class="progress-bar bg-success" data-width="50%"></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a data-toggle="tooltip" title="" data-original-title="Edit">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a data-toggle="tooltip" title="" data-original-title="Delete">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-img">
+                                    <img src="assets/img/users/user-1.png" alt="">
+                                </td>
+                                <td>
+                                    <h6 class="mb-0 font-13">Android Game App</h6>
+                                    <p class="m-0 font-12">
+                                        Assigned to<span class="col-green font-weight-bold"> Sarah Smith</span>
+                                    </p>
+                                </td>
+                                <td>22-05-2019</td>
+                                <td class="text-truncate">
+                                    <ul class="list-unstyled order-list m-b-0 m-b-0">
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-4.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="Wildan Ahdian">
+                                        </li>
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-7.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="John Deo">
+                                        </li>
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-2.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="Sarah Smith">
+                                        </li>
+                                        <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="badge-outline col-green">Low</div>
+                                </td>
+                                <td class="align-middle">
+                                    <div class="progress-text">55%</div>
+                                    <div class="progress" data-height="6">
+                                        <div class="progress-bar bg-purple" data-width="55%"></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a data-toggle="tooltip" title="" data-original-title="Edit">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a data-toggle="tooltip" title="" data-original-title="Delete">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-img">
+                                    <img src="assets/img/users/user-5.png" alt="">
+                                </td>
+                                <td>
+                                    <h6 class="mb-0 font-13">Java Web Service</h6>
+                                    <p class="m-0 font-12">
+                                        Assigned to<span class="col-green font-weight-bold"> Cara Stevens</span>
+                                    </p>
+                                </td>
+                                <td>11-04-2019</td>
+                                <td class="text-truncate">
+                                    <ul class="list-unstyled order-list m-b-0 m-b-0">
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-3.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="Wildan Ahdian">
+                                        </li>
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-7.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="John Deo">
+                                        </li>
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-8.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="Sarah Smith">
+                                        </li>
+                                        <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="badge-outline col-blue">Medium</div>
+                                </td>
+                                <td class="align-middle">
+                                    <div class="progress-text">70%</div>
+                                    <div class="progress" data-height="6">
+                                        <div class="progress-bar" data-width="70%"></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a data-toggle="tooltip" title="" data-original-title="Edit">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a data-toggle="tooltip" title="" data-original-title="Delete">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-img">
+                                    <img src="assets/img/users/user-9.png" alt="">
+                                </td>
+                                <td>
+                                    <h6 class="mb-0 font-13">Wedding IOS App</h6>
+                                    <p class="m-0 font-12">
+                                        Assigned to<span class="col-green font-weight-bold"> John Doe</span>
+                                    </p>
+                                </td>
+                                <td>19-05-2019</td>
+                                <td class="text-truncate">
+                                    <ul class="list-unstyled order-list m-b-0 m-b-0">
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-2.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="Wildan Ahdian">
+                                        </li>
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-10.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="John Deo">
+                                        </li>
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-4.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="Sarah Smith">
+                                        </li>
+                                        <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="badge-outline col-red">High</div>
+                                </td>
+                                <td class="align-middle">
+                                    <div class="progress-text">45%</div>
+                                    <div class="progress" data-height="6">
+                                        <div class="progress-bar bg-cyan" data-width="45%"></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a data-toggle="tooltip" title="" data-original-title="Edit">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a data-toggle="tooltip" title="" data-original-title="Delete">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-img">
+                                    <img src="assets/img/users/user-10.png" alt="">
+                                </td>
+                                <td>
+                                    <h6 class="mb-0 font-13">Blize Admin Template</h6>
+                                    <p class="m-0 font-12">
+                                        Assigned to<span class="col-green font-weight-bold"> Ashton Cox</span>
+                                    </p>
+                                </td>
+                                <td>25-07-2019</td>
+                                <td class="text-truncate">
+                                    <ul class="list-unstyled order-list m-b-0 m-b-0">
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-1.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="Wildan Ahdian">
+                                        </li>
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-5.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="John Deo">
+                                        </li>
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-7.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="Sarah Smith">
+                                        </li>
+                                        <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="badge-outline col-blue">Medium</div>
+                                </td>
+                                <td class="align-middle">
+                                    <div class="progress-text">67%</div>
+                                    <div class="progress" data-height="6">
+                                        <div class="progress-bar bg-red" data-width="67%"></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a data-toggle="tooltip" title="" data-original-title="Edit">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a data-toggle="tooltip" title="" data-original-title="Delete">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-img">
+                                    <img src="assets/img/users/user-4.png" alt="">
+                                </td>
+                                <td>
+                                    <h6 class="mb-0 font-13">React js website</h6>
+                                    <p class="m-0 font-12">
+                                        Assigned to<span class="col-green font-weight-bold"> Sarah Smith </span>
+                                    </p>
+                                </td>
+                                <td>11-08-2019</td>
+                                <td class="text-truncate">
+                                    <ul class="list-unstyled order-list m-b-0 m-b-0">
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-5.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="Wildan Ahdian">
+                                        </li>
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-8.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="John Deo">
+                                        </li>
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-3.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="Sarah Smith">
+                                        </li>
+                                        <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="badge-outline col-green">Low</div>
+                                </td>
+                                <td class="align-middle">
+                                    <div class="progress-text">41%</div>
+                                    <div class="progress" data-height="6">
+                                        <div class="progress-bar bg-orange" data-width="41%"></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a data-toggle="tooltip" title="" data-original-title="Edit">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a data-toggle="tooltip" title="" data-original-title="Delete">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-img">
+                                    <img src="assets/img/users/user-10.png" alt="">
+                                </td>
+                                <td>
+                                    <h6 class="mb-0 font-13">SEO improvement</h6>
+                                    <p class="m-0 font-12">
+                                        Assigned to<span class="col-green font-weight-bold"> Janak Gandhi</span>
+                                    </p>
+                                </td>
+                                <td>22-02-2018</td>
+                                <td class="text-truncate">
+                                    <ul class="list-unstyled order-list m-b-0 m-b-0">
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-3.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="Wildan Ahdian">
+                                        </li>
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-9.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="John Deo">
+                                        </li>
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-1.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="Sarah Smith">
+                                        </li>
+                                        <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="badge-outline col-red">High</div>
+                                </td>
+                                <td class="align-middle">
+                                    <div class="progress-text">70%</div>
+                                    <div class="progress" data-height="6">
+                                        <div class="progress-bar bg-success" data-width="70%"></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a data-toggle="tooltip" title="" data-original-title="Edit">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a data-toggle="tooltip" title="" data-original-title="Delete">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="table-img">
+                                    <img src="assets/img/users/user-6.png" alt="">
+                                </td>
+                                <td>
+                                    <h6 class="mb-0 font-13">Laravel Website</h6>
+                                    <p class="m-0 font-12">
+                                        Assigned to<span class="col-green font-weight-bold"> Mili Rain</span>
+                                    </p>
+                                </td>
+                                <td>31-03-2019</td>
+                                <td class="text-truncate">
+                                    <ul class="list-unstyled order-list m-b-0 m-b-0">
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-4.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="Wildan Ahdian">
+                                        </li>
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-7.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="John Deo">
+                                        </li>
+                                        <li class="team-member team-member-sm">
+                                            <img class="rounded-circle"
+                                                 src="assets/img/users/user-2.png" alt="user" data-toggle="tooltip" title=""
+                                                 data-original-title="Sarah Smith">
+                                        </li>
+                                        <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="badge-outline col-green">Low</div>
+                                </td>
+                                <td class="align-middle">
+                                    <div class="progress-text">55%</div>
+                                    <div class="progress" data-height="6">
+                                        <div class="progress-bar bg-purple" data-width="55%"></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a data-toggle="tooltip" title="" data-original-title="Edit">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                    <a data-toggle="tooltip" title="" data-original-title="Delete">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+@*</section>
+    </div>*@
+<script>
+    const apiKey = "AAPKc21c25baaf40479d9bd172699e2e7106yI9AiNPZK1BLrTgv85rEEOHiLzCrFTRtXeJnGtP45V62xfosNU9BaOu-IQJeRtAt";
+    var theMarker = {};
+    var marker = {};
+    const basemapEnum = "ArcGIS:Navigation";
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var lat = -26.150831;
+    var lon = 28.391330;
+
+
+    const map = L.map("map", {
+        minZoom: 2
+
+    }).setView([lat, lon], 10); // Sydney
+
+    L.esri.Vector.vectorBasemapLayer(basemapEnum, {
+        apiKey: apiKey
+    }).addTo(map);
+
+
+    var myStyle = {
+        fillColor: '#72bcd4',
+        fillOpacity: 0.5,
+        weight: 1,
+        opacity: 1,
+        color: '#000',
+        dashArray: '2'
+    };
+
+    var theLayer = L.geoJson(null, { style: myStyle });
+    theLayer.addTo(map);
+
+    $.getJSON('../Content/eku.json', function (data) {
+        console.log(data);
+        theLayer.addData(data);
+    });
+
+    const searchControl = L.esri.Geocoding.geosearch({
+        position: "topright",
+        placeholder: "Enter an address or place e.g. 29 Louis Botha Rd",
+        useMapBounds: false,
+        providers: [L.esri.Geocoding.arcgisOnlineProvider({
+            apikey: apiKey,
+            nearby: {
+                lat: lat,
+                lng: lon
+            },
+        })]
+    }).addTo(map);
+
+    var geocodeService = L.esri.Geocoding.geocodeService({
+        apikey: apiKey // replace with your api key - https://developers.arcgis.com
+    });
+
+    const results = L.layerGroup().addTo(map);
+
+
+    map.on('click', function (e) {
+        map.removeLayer(CurrentLocationMarker);
+        if (typeof marker !== 'undefined') {
+            if (marker !== undefined) {
+                map.removeLayer(marker);
+            }
+        }
+        lat = e.latlng.lat;
+        lon = e.latlng.lng;
+
+
+
+        console.log("You clicked the map at LAT: " + lat + " and LONG: " + lon);
+
+
+        if (theMarker != undefined) {
+            map.removeLayer(theMarker);
+        };
+
+
+
+        geocodeService.reverse().latlng(e.latlng).run(function (error, result) {
+            if (error) {
+                return;
+            }
+
+            theMarker = L.marker([lat, lon], /*{draggable:true}*/).addTo(map);
+            console.log(result.address.Match_addr);
+            theMarker.bindPopup('<p>' + result.address.Match_addr + '</p><br/>'
+                + '<button type="button" class="btn btn-primary btn-block">Use this location</button></p>'
+            ).openPopup();
+
+        });
+
+
+        /*
+        theMarker.on('dragend', function(e) {
+         console.log('marker dragend event');
+         console.log(e.target._latlng);
+           lat = e.target._latlng.lat;
+           lon = e.target._latlng.lng;
+         $('#myltlon').html(lat+','+lon);
+
+
+
+         theMarker.bindPopup('<b>'+lat+','+lon+'</b><br/>'
+       +'<button type="button" class="btn btn-primary btn-block">Use this location</button></p>'
+       ).openPopup();
+
+
+
+       });*/
+
+    });
+
+    searchControl.on("results", (data) => {
+        results.clearLayers();
+        for (let i = data.results.length - 1; i >= 0; i--) {
+            const lngLatString = `${Math.round(data.results[i].latlng.lng * 100000) / 100000}, ${Math.round(data.results[i].latlng.lat * 100000) / 100000}`;
+            marker = L.marker(data.results[i].latlng);
+            marker.bindPopup(`<p>${data.results[i].properties.LongLabel} <p/><button type="button" class="btn btn-primary btn-block">Use this location</button></p>`)
+            results.addLayer(marker);
+            marker.openPopup();
+
+            map.removeLayer(CurrentLocationMarker);
+            if (typeof theMarker !== 'undefined') {
+                if (theMarker !== undefined) {
+                    map.removeLayer(theMarker);
+                }
+            }
+        }
+    });
+
+</script>
+<script src="/Content/Leaflet-Mobile_files/jquery.min.js"></script>
+
+<!-- General JS Scripts -->
+<script src="~/assets/js/app.min.js"></script>
+<!-- JS Libraies -->
+<script src="~/assets/bundles/apexcharts/apexcharts.min.js"></script>
+<script src="~/assets/bundles/amcharts4/core.js"></script>
+<script src="~/assets/bundles/amcharts4/charts.js"></script>
+<script src="~/assets/bundles/amcharts4/animated.js"></script>
+<script src="~/assets/bundles/jquery.sparkline.min.js"></script>
+<!-- Page Specific JS File -->
+@*<script src="~/assets/js/page/index.js"></script>*@
+<!-- Template JS File -->
+@*<script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap" type="text/javascript"></script>*@
+@*<script src="~/assets/bundles/gmaps.js"></script>*@
+<!-- Page Specific JS File -->
+@*<script src="~/assets/js/page/gmaps-multiple-marker.js"></script>*@

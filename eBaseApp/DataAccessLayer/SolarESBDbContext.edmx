@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ESB_UATModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="R_CC_CUT_OFF_PROCESSING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="38" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ACTION_TYPE" Type="char" MaxLength="1" />
+          <Property Name="ACCOUNT_NO" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="TOWN_EXT" Type="varchar" MaxLength="15" />
+          <Property Name="FINAL_RUN_IND" Type="char" MaxLength="1" />
+          <Property Name="CONSUMER_TYPE" Type="char" MaxLength="1" />
+          <Property Name="STREET_NUMBER" Type="varchar" MaxLength="10" />
+          <Property Name="STREET_NAME" Type="varchar" MaxLength="60" />
+          <Property Name="SUBURB_DESC" Type="varchar" MaxLength="25" />
+          <Property Name="TOWNSHIP_DESC" Type="varchar" MaxLength="25" />
+          <Property Name="UNIT_NO" Type="varchar" MaxLength="27" />
+          <Property Name="INITIALS" Type="varchar" MaxLength="4" />
+          <Property Name="SURNAME" Type="varchar" MaxLength="22" />
+          <Property Name="POSTAL_ADDR_LINE1" Type="varchar" MaxLength="50" />
+          <Property Name="POSTAL_ADDR_LINE2" Type="varchar" MaxLength="50" />
+          <Property Name="POSTAL_ADDR_LINE3" Type="varchar" MaxLength="50" />
+          <Property Name="POSTAL_CODE" Type="int" />
+          <Property Name="ID_NO" Type="varchar" MaxLength="13" />
+          <Property Name="START_DATE" Type="int" />
+          <Property Name="MAST_ACCT" Type="char" MaxLength="1" />
+          <Property Name="AMT_REQUIRED" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="AMT_REQUIRED_IND" Type="char" MaxLength="1" />
+          <Property Name="DEPOSIT_AMT" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="HOME_TEL_NO" Type="varchar" MaxLength="16" />
+          <Property Name="WORK_TEL_NO" Type="varchar" MaxLength="16" />
+          <Property Name="HOME_AREA_CODE" Type="varchar" MaxLength="10" />
+          <Property Name="WORK_AREA_CODE" Type="varchar" MaxLength="10" />
+          <Property Name="CELL_TEL_NO" Type="varchar" MaxLength="16" />
+          <Property Name="EL_IND" Type="char" MaxLength="1" />
+          <Property Name="WA_IND" Type="char" MaxLength="1" />
+          <Property Name="HIGH_IND" Type="char" MaxLength="1" />
+          <Property Name="BILL_CYCLE" Type="int" />
+          <Property Name="OWNER_IND" Type="char" MaxLength="1" />
+          <Property Name="SERVICE_IND" Type="char" MaxLength="1" />
+          <Property Name="CURR_BAL" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="CURR_BAL_IND" Type="char" MaxLength="1" />
+          <Property Name="DAY_30_BAL" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="DAYS_30_IND" Type="char" MaxLength="1" />
+          <Property Name="DAY_60_BAL" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="DAYS_60_IND" Type="char" MaxLength="1" />
+          <Property Name="DAY_90_BAL" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="DAYS_90_IND" Type="char" MaxLength="1" />
+          <Property Name="DAY_120_BAL" Type="numeric" Precision="12" Scale="2" />
+          <Property Name="DAYS_120_IND" Type="char" MaxLength="1" />
+          <Property Name="COMPLEX_NO" Type="varchar" MaxLength="6" />
+          <Property Name="BUILDING_DESC" Type="varchar" MaxLength="25" />
+          <Property Name="BOOK_NO" Type="varchar" MaxLength="10" />
+          <Property Name="WA_ROUTE" Type="varchar" MaxLength="15" />
+          <Property Name="WA_SERVICE_TYPE" Type="varchar" MaxLength="4" />
+          <Property Name="WA_SEQUENCE_NO" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="WA_LAST_READING" Type="varchar" MaxLength="15" />
+          <Property Name="WA_READ_DATE" Type="varchar" MaxLength="8" />
+          <Property Name="WA_METER_NO" Type="varchar" MaxLength="15" />
+          <Property Name="WA_METER_LOCATION" Type="varchar" MaxLength="50" />
+          <Property Name="WA_METER_NOTE" Type="varchar" MaxLength="20" />
+          <Property Name="EL_ROUTE" Type="varchar" MaxLength="15" />
+          <Property Name="EL_SERVICE_TYPE" Type="varchar" MaxLength="4" />
+          <Property Name="EL_SEQUENCE_NO" Type="numeric" Precision="4" Scale="0" />
+          <Property Name="EL_LAST_READING" Type="varchar" MaxLength="15" />
+          <Property Name="EL_READ_DATE" Type="varchar" MaxLength="8" />
+          <Property Name="EL_METER_NO" Type="varchar" MaxLength="15" />
+          <Property Name="EL_METER_LOCATION" Type="varchar" MaxLength="50" />
+          <Property Name="EL_METER_NOTE" Type="varchar" MaxLength="20" />
+          <Property Name="PREPAID_METER1" Type="varchar" MaxLength="11" />
+          <Property Name="PREPAID_METER2" Type="varchar" MaxLength="11" />
+          <Property Name="PREPAID_METER3" Type="varchar" MaxLength="11" />
+          <Property Name="DISCONNECT_DATE" Type="int" />
+          <Property Name="EMAIL_ADDR" Type="varchar" MaxLength="45" />
+          <Property Name="FAX_NUMBER" Type="varchar" MaxLength="15" />
+          <Property Name="WARD_NUMBER" Type="int" />
+          <Property Name="WARD_DESC" Type="varchar" MaxLength="50" />
+          <Property Name="DEBTOR_TYPE" Type="varchar" MaxLength="2" />
+          <Property Name="DEBTOR_TYPE_DESC" Type="varchar" MaxLength="50" />
+          <Property Name="PROCESS_ID" Type="varchar" MaxLength="40" />
+          <Property Name="PROCESSED" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="INSERT_TS" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="ESB_UATModelStoreContainer">
+          <EntitySet Name="R_CC_CUT_OFF_PROCESSING" EntityType="Self.R_CC_CUT_OFF_PROCESSING" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ESB_UATModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="R_CC_CUT_OFF_PROCESSING">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ACTION_TYPE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ACCOUNT_NO" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TOWN_EXT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="FINAL_RUN_IND" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CONSUMER_TYPE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="STREET_NUMBER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="STREET_NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="SUBURB_DESC" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="TOWNSHIP_DESC" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="UNIT_NO" Type="String" MaxLength="27" FixedLength="false" Unicode="false" />
+          <Property Name="INITIALS" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="SURNAME" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+          <Property Name="POSTAL_ADDR_LINE1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="POSTAL_ADDR_LINE2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="POSTAL_ADDR_LINE3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="POSTAL_CODE" Type="Int32" />
+          <Property Name="ID_NO" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="START_DATE" Type="Int32" />
+          <Property Name="MAST_ACCT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="AMT_REQUIRED" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="AMT_REQUIRED_IND" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="DEPOSIT_AMT" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="HOME_TEL_NO" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="WORK_TEL_NO" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="HOME_AREA_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="WORK_AREA_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CELL_TEL_NO" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="EL_IND" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="WA_IND" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="HIGH_IND" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="BILL_CYCLE" Type="Int32" />
+          <Property Name="OWNER_IND" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="SERVICE_IND" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CURR_BAL" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="CURR_BAL_IND" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="DAY_30_BAL" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="DAYS_30_IND" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="DAY_60_BAL" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="DAYS_60_IND" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="DAY_90_BAL" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="DAYS_90_IND" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="DAY_120_BAL" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="DAYS_120_IND" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="COMPLEX_NO" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="BUILDING_DESC" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="BOOK_NO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="WA_ROUTE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="WA_SERVICE_TYPE" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="WA_SEQUENCE_NO" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="WA_LAST_READING" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="WA_READ_DATE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="WA_METER_NO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="WA_METER_LOCATION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WA_METER_NOTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EL_ROUTE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="EL_SERVICE_TYPE" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="EL_SEQUENCE_NO" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="EL_LAST_READING" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="EL_READ_DATE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="EL_METER_NO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="EL_METER_LOCATION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EL_METER_NOTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PREPAID_METER1" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="PREPAID_METER2" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="PREPAID_METER3" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="DISCONNECT_DATE" Type="Int32" />
+          <Property Name="EMAIL_ADDR" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="FAX_NUMBER" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="WARD_NUMBER" Type="Int32" />
+          <Property Name="WARD_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DEBTOR_TYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="DEBTOR_TYPE_DESC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PROCESS_ID" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="PROCESSED" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="INSERT_TS" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="SolarESBDbContextQa" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="R_CC_CUT_OFF_PROCESSING" EntityType="Self.R_CC_CUT_OFF_PROCESSING" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ESB_UATModelStoreContainer" CdmEntityContainer="SolarESBDbContextQa">
+          <EntitySetMapping Name="R_CC_CUT_OFF_PROCESSING">
+            <EntityTypeMapping TypeName="ESB_UATModel.R_CC_CUT_OFF_PROCESSING">
+              <MappingFragment StoreEntitySet="R_CC_CUT_OFF_PROCESSING">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ACTION_TYPE" ColumnName="ACTION_TYPE" />
+                <ScalarProperty Name="ACCOUNT_NO" ColumnName="ACCOUNT_NO" />
+                <ScalarProperty Name="TOWN_EXT" ColumnName="TOWN_EXT" />
+                <ScalarProperty Name="FINAL_RUN_IND" ColumnName="FINAL_RUN_IND" />
+                <ScalarProperty Name="CONSUMER_TYPE" ColumnName="CONSUMER_TYPE" />
+                <ScalarProperty Name="STREET_NUMBER" ColumnName="STREET_NUMBER" />
+                <ScalarProperty Name="STREET_NAME" ColumnName="STREET_NAME" />
+                <ScalarProperty Name="SUBURB_DESC" ColumnName="SUBURB_DESC" />
+                <ScalarProperty Name="TOWNSHIP_DESC" ColumnName="TOWNSHIP_DESC" />
+                <ScalarProperty Name="UNIT_NO" ColumnName="UNIT_NO" />
+                <ScalarProperty Name="INITIALS" ColumnName="INITIALS" />
+                <ScalarProperty Name="SURNAME" ColumnName="SURNAME" />
+                <ScalarProperty Name="POSTAL_ADDR_LINE1" ColumnName="POSTAL_ADDR_LINE1" />
+                <ScalarProperty Name="POSTAL_ADDR_LINE2" ColumnName="POSTAL_ADDR_LINE2" />
+                <ScalarProperty Name="POSTAL_ADDR_LINE3" ColumnName="POSTAL_ADDR_LINE3" />
+                <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
+                <ScalarProperty Name="ID_NO" ColumnName="ID_NO" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="MAST_ACCT" ColumnName="MAST_ACCT" />
+                <ScalarProperty Name="AMT_REQUIRED" ColumnName="AMT_REQUIRED" />
+                <ScalarProperty Name="AMT_REQUIRED_IND" ColumnName="AMT_REQUIRED_IND" />
+                <ScalarProperty Name="DEPOSIT_AMT" ColumnName="DEPOSIT_AMT" />
+                <ScalarProperty Name="HOME_TEL_NO" ColumnName="HOME_TEL_NO" />
+                <ScalarProperty Name="WORK_TEL_NO" ColumnName="WORK_TEL_NO" />
+                <ScalarProperty Name="HOME_AREA_CODE" ColumnName="HOME_AREA_CODE" />
+                <ScalarProperty Name="WORK_AREA_CODE" ColumnName="WORK_AREA_CODE" />
+                <ScalarProperty Name="CELL_TEL_NO" ColumnName="CELL_TEL_NO" />
+                <ScalarProperty Name="EL_IND" ColumnName="EL_IND" />
+                <ScalarProperty Name="WA_IND" ColumnName="WA_IND" />
+                <ScalarProperty Name="HIGH_IND" ColumnName="HIGH_IND" />
+                <ScalarProperty Name="BILL_CYCLE" ColumnName="BILL_CYCLE" />
+                <ScalarProperty Name="OWNER_IND" ColumnName="OWNER_IND" />
+                <ScalarProperty Name="SERVICE_IND" ColumnName="SERVICE_IND" />
+                <ScalarProperty Name="CURR_BAL" ColumnName="CURR_BAL" />
+                <ScalarProperty Name="CURR_BAL_IND" ColumnName="CURR_BAL_IND" />
+                <ScalarProperty Name="DAY_30_BAL" ColumnName="DAY_30_BAL" />
+                <ScalarProperty Name="DAYS_30_IND" ColumnName="DAYS_30_IND" />
+                <ScalarProperty Name="DAY_60_BAL" ColumnName="DAY_60_BAL" />
+                <ScalarProperty Name="DAYS_60_IND" ColumnName="DAYS_60_IND" />
+                <ScalarProperty Name="DAY_90_BAL" ColumnName="DAY_90_BAL" />
+                <ScalarProperty Name="DAYS_90_IND" ColumnName="DAYS_90_IND" />
+                <ScalarProperty Name="DAY_120_BAL" ColumnName="DAY_120_BAL" />
+                <ScalarProperty Name="DAYS_120_IND" ColumnName="DAYS_120_IND" />
+                <ScalarProperty Name="COMPLEX_NO" ColumnName="COMPLEX_NO" />
+                <ScalarProperty Name="BUILDING_DESC" ColumnName="BUILDING_DESC" />
+                <ScalarProperty Name="BOOK_NO" ColumnName="BOOK_NO" />
+                <ScalarProperty Name="WA_ROUTE" ColumnName="WA_ROUTE" />
+                <ScalarProperty Name="WA_SERVICE_TYPE" ColumnName="WA_SERVICE_TYPE" />
+                <ScalarProperty Name="WA_SEQUENCE_NO" ColumnName="WA_SEQUENCE_NO" />
+                <ScalarProperty Name="WA_LAST_READING" ColumnName="WA_LAST_READING" />
+                <ScalarProperty Name="WA_READ_DATE" ColumnName="WA_READ_DATE" />
+                <ScalarProperty Name="WA_METER_NO" ColumnName="WA_METER_NO" />
+                <ScalarProperty Name="WA_METER_LOCATION" ColumnName="WA_METER_LOCATION" />
+                <ScalarProperty Name="WA_METER_NOTE" ColumnName="WA_METER_NOTE" />
+                <ScalarProperty Name="EL_ROUTE" ColumnName="EL_ROUTE" />
+                <ScalarProperty Name="EL_SERVICE_TYPE" ColumnName="EL_SERVICE_TYPE" />
+                <ScalarProperty Name="EL_SEQUENCE_NO" ColumnName="EL_SEQUENCE_NO" />
+                <ScalarProperty Name="EL_LAST_READING" ColumnName="EL_LAST_READING" />
+                <ScalarProperty Name="EL_READ_DATE" ColumnName="EL_READ_DATE" />
+                <ScalarProperty Name="EL_METER_NO" ColumnName="EL_METER_NO" />
+                <ScalarProperty Name="EL_METER_LOCATION" ColumnName="EL_METER_LOCATION" />
+                <ScalarProperty Name="EL_METER_NOTE" ColumnName="EL_METER_NOTE" />
+                <ScalarProperty Name="PREPAID_METER1" ColumnName="PREPAID_METER1" />
+                <ScalarProperty Name="PREPAID_METER2" ColumnName="PREPAID_METER2" />
+                <ScalarProperty Name="PREPAID_METER3" ColumnName="PREPAID_METER3" />
+                <ScalarProperty Name="DISCONNECT_DATE" ColumnName="DISCONNECT_DATE" />
+                <ScalarProperty Name="EMAIL_ADDR" ColumnName="EMAIL_ADDR" />
+                <ScalarProperty Name="FAX_NUMBER" ColumnName="FAX_NUMBER" />
+                <ScalarProperty Name="WARD_NUMBER" ColumnName="WARD_NUMBER" />
+                <ScalarProperty Name="WARD_DESC" ColumnName="WARD_DESC" />
+                <ScalarProperty Name="DEBTOR_TYPE" ColumnName="DEBTOR_TYPE" />
+                <ScalarProperty Name="DEBTOR_TYPE_DESC" ColumnName="DEBTOR_TYPE_DESC" />
+                <ScalarProperty Name="PROCESS_ID" ColumnName="PROCESS_ID" />
+                <ScalarProperty Name="PROCESSED" ColumnName="PROCESSED" />
+                <ScalarProperty Name="INSERT_TS" ColumnName="INSERT_TS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
