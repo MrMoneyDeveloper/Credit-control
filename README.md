@@ -7,7 +7,7 @@ Overview
 The Credit Control System is an essential component of the debt control division, facilitating the collection of outstanding debts from debtors who have surpassed their due dates. As a front-end developer, I've focused on creating a responsive and user-centric interface to enhance the overall user experience in navigating and interacting with the system.
 
 
-![image](https://github.com/naadz03/Credit-control/assets/129620450/e14e6bf3-fce0-4b65-a16c-6b3b0d8b240b)
+![image]([293876405-e14e6bf3-fce0-4b65-a16c-6b3b0d8b240b.png](https://github.com/MrMoneyDeveloper/Credit-control/blob/master/293876405-e14e6bf3-fce0-4b65-a16c-6b3b0d8b240b.png))
 
 
 ![image](https://github.com/naadz03/Credit-control/assets/129620450/91975aaf-30ad-423c-87dc-df29797616e4)
